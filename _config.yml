@@ -1,0 +1,21 @@
+title: 6G & 卫星通信动态简报
+subtitle: 每日公开信息检索 · 空天地一体化 · NTN · 通感算智
+description: 聚焦6G、卫星通信、星地融合、通感算一体化等前沿动态，每日编制简报。
+author: 报告分析专家
+language: zh-CN
+timezone: Asia/Shanghai
+
+url: https://6g-brief-blog.pages.dev
+root: /
+
+permalink: :year/:month/:day/:title/
+
+theme: landscape
+
+default_category: 简报
+render_drafts: false
+
+deploy:
+  type: git
+  repo: https://github.com/luckyeap2020/6G-News.git
+  branch: main
