@@ -1,12 +1,8 @@
-name: Deploy to Cloudflare Pages
+name: Build Hexo
 
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: read
-  deployments: write
 
 jobs:
   build:
@@ -23,14 +19,13 @@ jobs:
           cache: npm
 
       - name: Install deps
-        run: npm ci
+        run: npm install
 
       - name: Hexo generate
         run: npx hexo generate
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=6g-brief-blog
+          name: public
+          path: public
